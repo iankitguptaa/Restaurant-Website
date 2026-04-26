@@ -22,7 +22,7 @@ const Checkout = () => {
     setLoading(true);
     
     try {
-      await axios.post('http://localhost:5000/api/orders', {
+      await axios.post(`http://${window.location.hostname}:5000/api/orders`, {
         userId: user.id,
         total: cartTotal + 50 + (cartTotal * 0.05) - discount,
         items: cart.map(item => ({ id: item.id, name: item.name, price: item.price, quantity: item.quantity, image: item.image }))
