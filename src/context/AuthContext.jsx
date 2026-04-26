@@ -42,7 +42,14 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem('user', JSON.stringify(userData));
         return userData;
       }
-      throw new Error(err.response?.data?.error || 'Login failed. Invalid credentials.');
+      
+      let errorMessage = err.message || 'Login failed. Invalid credentials.';
+      const apiError = err.response?.data?.error || err.response?.data?.message;
+      if (apiError) {
+        errorMessage = typeof apiError === 'string' ? apiError : (apiError.message || JSON.stringify(apiError));
+      }
+      
+      throw new Error(errorMessage);
     }
   };
 
