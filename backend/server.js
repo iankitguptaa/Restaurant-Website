@@ -121,8 +121,18 @@ const seedDatabase = async () => {
 
 const PORT = 5000;
 
-sequelize.sync({ force: false }).then(async () => {
-  console.log('Database synced');
-  await seedDatabase();
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-}).catch(err => console.error('Error syncing DB:', err));
+if (process.env.VERCEL) {
+  // On Vercel, just sync db and export app for Serverless Function
+  sequelize.sync({ force: false }).then(async () => {
+    await seedDatabase();
+  }).catch(err => console.error('Error syncing DB:', err));
+} else {
+  // Local development
+  sequelize.sync({ force: false }).then(async () => {
+    console.log('Database synced');
+    await seedDatabase();
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  }).catch(err => console.error('Error syncing DB:', err));
+}
+
+module.exports = app;

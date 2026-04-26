@@ -58,7 +58,12 @@ const Orders = () => {
     if (user) {
       axios.get(`/api/orders?userId=${user.id}`)
         .then(res => setOrders(res.data.map(o => ({ ...o, id: o.order_id }))))
-        .catch(err => console.error('Error fetching orders:', err));
+        .catch(err => {
+          console.warn('Error fetching orders, using fallback:', err);
+          const allOrders = JSON.parse(localStorage.getItem('mockOrders') || '[]');
+          const userOrders = allOrders.filter(o => o.userId === user.id).sort((a,b) => new Date(b.date) - new Date(a.date));
+          setOrders(userOrders.map(o => ({ ...o, id: o.order_id })));
+        });
     }
   }, [user]);
 
