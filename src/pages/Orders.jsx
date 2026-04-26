@@ -56,7 +56,7 @@ const Orders = () => {
 
   useEffect(() => {
     if (user) {
-      axios.get(`http://${window.location.hostname}:5000/api/orders?userId=${user.id}`)
+      axios.get(`/api/orders?userId=${user.id}`)
         .then(res => setOrders(res.data.map(o => ({ ...o, id: o.order_id }))))
         .catch(err => console.error('Error fetching orders:', err));
     }

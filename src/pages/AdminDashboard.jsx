@@ -18,7 +18,7 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     if (user?.role === 'admin') {
-      axios.get(`http://${window.location.hostname}:5000/api/orders`)
+      axios.get('/api/orders')
         .then(res => setOrders(res.data.map(o => ({ ...o, id: o.order_id }))))
         .catch(err => console.error('Error fetching admin orders:', err));
       
@@ -61,7 +61,7 @@ const AdminDashboard = () => {
     };
 
     try {
-      const response = await axios.post(`http://${window.location.hostname}:5000/api/menu`, foodItem);
+      const response = await axios.post('/api/menu', foodItem);
       // Map id_string to id for frontend
       const createdItem = { ...response.data, id: response.data.id_string || response.data.id.toString() };
       setItems([...items, createdItem]);
