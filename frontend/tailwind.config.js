@@ -8,67 +8,54 @@ export default {
   theme: {
     extend: {
       colors: {
-        canvas: {
-          DEFAULT: '#fafafa',
-          elevated: '#ffffff',
-          dark: '#0a0a0a',
-          'dark-elevated': '#121212',
+        brand: {
+          DEFAULT: '#FF5E1B',
+          hover: '#E04B0E',
+          soft: '#FFF0E6',
+          peach: '#FFF5EB',
+          mint: '#E0F2F1',
+          sage: '#E8F5E9',
+          pink: '#FFEBEE',
+          lavender: '#F3E5F5',
+        },
+        cream: {
+          DEFAULT: '#FFF9F2',
+          card: '#FFFFFF',
+          dark: '#12100E',
+          'dark-card': '#1E1B18',
         },
         ink: {
-          DEFAULT: '#171717',
-          dark: '#ededed',
+          DEFAULT: '#1F1F1F',
+          dark: '#F5F2EE',
         },
         body: {
-          DEFAULT: '#4d4d4d',
-          dark: '#a1a1a1',
+          DEFAULT: '#5E5854',
+          dark: '#B0A8A0',
         },
         mute: {
-          DEFAULT: '#8f8f8f',
-          dark: '#707070',
-        },
-        faint: {
-          DEFAULT: '#a1a1a1',
-          dark: '#444444',
+          DEFAULT: '#999088',
+          dark: '#736B63',
         },
         hairline: {
-          DEFAULT: '#ebebeb',
-          soft: '#f2f2f2',
-          dark: '#222222',
-          'dark-soft': '#1a1a1a',
-        },
-        accent: {
-          blue: '#0070f3',
-          'blue-deep': '#0761d1',
-          'blue-soft': '#d3e5ff',
-          violet: '#7928ca',
-          cyan: '#50e3c2',
-          pink: '#ff0080',
-          magenta: '#eb367f',
-          warning: '#f5a623',
-          error: '#ee0000',
+          DEFAULT: '#F0E8DF',
+          dark: '#2A2520',
         }
       },
       fontFamily: {
-        sans: ['Geist', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        sans: ['Inter', 'Geist', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
         mono: ['Geist Mono', 'JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
-        display: ['Geist', 'Inter', 'sans-serif'],
-      },
-      letterSpacing: {
-        'display-xl': '-2.4px',
-        'heading-lg': '-1.28px',
-        'heading-md': '-0.4px',
-        'label-sm': '-0.28px',
       },
       borderRadius: {
-        'sm': '6px',
-        'md': '12px',
-        'lg': '16px',
-        'pill-category': '64px',
+        '3xl': '24px',
+        '2xl': '20px',
+        'xl': '16px',
         'pill': '100px',
       },
       boxShadow: {
-        'whisper': '0px 1px 2px rgba(0, 0, 0, 0.04)',
-        'floating': '0px 2px 4px rgba(0, 0, 0, 0.04), 0px 8px 16px -4px rgba(0, 0, 0, 0.06)',
+        'warm-sm': '0 2px 8px rgba(255, 94, 27, 0.06)',
+        'warm-md': '0 4px 20px rgba(0, 0, 0, 0.05)',
+        'warm-lg': '0 10px 30px rgba(0, 0, 0, 0.08)',
+        'orange-glow': '0 8px 24px rgba(255, 94, 27, 0.25)',
       }
     },
   },

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply bg-[#fafafa] dark:bg-[#0a0a0a] text-[#171717] dark:text-[#ededed] font-sans antialiased selection:bg-[#171717] selection:text-white dark:selection:bg-white dark:selection:text-[#171717];
+    @apply bg-[#FFF9F2] dark:bg-[#12100E] text-[#1F1F1F] dark:text-[#F5F2EE] font-sans antialiased selection:bg-[#FF5E1B] selection:text-white;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -15,104 +15,41 @@
 }
 
 @layer utilities {
-  /* Liquid Glassmorphism Navbar Styling */
-  .liquid-glass {
-    background: rgba(255, 255, 255, 0.68);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08), 
-                inset 0 1px 2px 0 rgba(255, 255, 255, 0.8),
-                inset 0 -1px 1px 0 rgba(0, 0, 0, 0.05);
+  /* Warm Glassmorphism & Soft Cards */
+  .warm-card {
+    @apply bg-white dark:bg-[#1E1B18] border border-[#F0E8DF] dark:border-[#2A2520] rounded-2xl shadow-warm-sm transition-all duration-300;
   }
 
-  .dark .liquid-glass {
-    background: rgba(18, 18, 18, 0.72);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 
-                inset 0 1px 1px 0 rgba(255, 255, 255, 0.15),
-                inset 0 -1px 1px 0 rgba(0, 0, 0, 0.4);
+  .warm-card-hover {
+    @apply warm-card hover:shadow-warm-md hover:-translate-y-1 hover:border-[#FF5E1B]/30;
   }
 
-  .liquid-glass-dropdown {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(24px) saturate(200%);
-    -webkit-backdrop-filter: blur(24px) saturate(200%);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.12);
+  /* Orange Pill Button */
+  .btn-orange-pill {
+    @apply bg-[#FF5E1B] hover:bg-[#E04B0E] text-white font-semibold text-[14px] rounded-full px-6 py-2.5 transition-all duration-200 shadow-orange-glow active:scale-95 inline-flex items-center justify-center gap-2;
   }
 
-  .dark .liquid-glass-dropdown {
-    background: rgba(20, 20, 20, 0.88);
-    backdrop-filter: blur(24px) saturate(200%);
-    -webkit-backdrop-filter: blur(24px) saturate(200%);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+  /* White Pill Button */
+  .btn-white-pill {
+    @apply bg-white dark:bg-[#26221F] hover:bg-[#FFF5EB] dark:hover:bg-[#302B27] text-[#1F1F1F] dark:text-white border border-[#EAE3DA] dark:border-[#38322C] font-semibold text-[14px] rounded-full px-6 py-2.5 transition-all duration-200 active:scale-95 inline-flex items-center justify-center gap-2 shadow-warm-sm;
   }
 
-  /* Geist Mesh Gradient for Hero Section */
-  .hero-mesh-gradient {
-    background: radial-gradient(circle at 50% 20%, rgba(80, 227, 194, 0.15), transparent 45%),
-                radial-gradient(circle at 20% 50%, rgba(0, 112, 243, 0.12), transparent 40%),
-                radial-gradient(circle at 80% 60%, rgba(121, 40, 202, 0.12), transparent 45%),
-                radial-gradient(circle at 40% 80%, rgba(235, 54, 127, 0.1), transparent 50%);
+  /* Compact Action Button */
+  .btn-orange-sm {
+    @apply bg-[#FF5E1B] hover:bg-[#E04B0E] text-white font-bold text-[13px] rounded-xl px-4 py-2 transition-all duration-200 active:scale-95 inline-flex items-center justify-center gap-1.5 shadow-warm-sm;
   }
 
-  .dark .hero-mesh-gradient {
-    background: radial-gradient(circle at 50% 20%, rgba(80, 227, 194, 0.1), transparent 45%),
-                radial-gradient(circle at 20% 50%, rgba(0, 112, 243, 0.15), transparent 40%),
-                radial-gradient(circle at 80% 60%, rgba(121, 40, 202, 0.15), transparent 45%),
-                radial-gradient(circle at 40% 80%, rgba(235, 54, 127, 0.12), transparent 50%);
+  .btn-orange-square {
+    @apply w-9 h-9 bg-[#FF5E1B] hover:bg-[#E04B0E] text-white rounded-xl flex items-center justify-center transition-all duration-200 shadow-warm-sm active:scale-95;
   }
 
-  /* Geist Monospace Eyebrow header spec */
-  .mono-eyebrow {
-    @apply font-mono text-[12px] font-medium tracking-[0.05em] uppercase text-[#8f8f8f] dark:text-[#707070];
-  }
-
-  /* Geist hairline cards */
-  .hairline-card {
-    @apply bg-white dark:bg-[#121212] border border-[#ebebeb] dark:border-[#222222] rounded-xl shadow-whisper transition-all duration-200;
-  }
-
-  .hairline-card-hover {
-    @apply hairline-card hover:border-[#171717] dark:hover:border-[#555555] hover:shadow-floating;
-  }
-
-  /* Buttons according to DESIGN.md */
-  .btn-primary-pill {
-    @apply bg-[#171717] hover:bg-[#333333] text-white dark:bg-white dark:hover:bg-[#e1e1e1] dark:text-[#171717] font-medium text-[15px] rounded-pill px-6 py-2.5 transition-all duration-200 inline-flex items-center justify-center gap-2;
-  }
-
-  .btn-secondary-pill {
-    @apply bg-white hover:bg-[#f2f2f2] text-[#171717] dark:bg-[#1a1a1a] dark:hover:bg-[#252525] dark:text-white border border-[#ebebeb] dark:border-[#333333] font-medium text-[15px] rounded-pill px-6 py-2.5 transition-all duration-200 inline-flex items-center justify-center gap-2;
-  }
-
-  .btn-primary-sm {
-    @apply bg-[#171717] hover:bg-[#333333] text-white dark:bg-white dark:hover:bg-[#e1e1e1] dark:text-[#171717] font-medium text-[14px] rounded-sm px-3.5 py-1.5 transition-all duration-200 inline-flex items-center justify-center gap-1.5;
-  }
-
-  .btn-ghost-sm {
-    @apply bg-white hover:bg-[#fafafa] text-[#171717] dark:bg-[#121212] dark:hover:bg-[#1a1a1a] dark:text-white border border-[#ebebeb] dark:border-[#222222] font-medium text-[14px] rounded-sm px-3.5 py-1.5 transition-all duration-200 inline-flex items-center justify-center gap-1.5;
-  }
-
-  .btn-category-pill {
-    @apply bg-white dark:bg-[#121212] border border-[#ebebeb] dark:border-[#222222] text-[#4d4d4d] dark:text-[#a1a1a1] hover:text-[#171717] dark:hover:text-white font-medium text-[14px] rounded-pill-category px-5 py-2 transition-all duration-200 inline-flex items-center gap-2;
-  }
-
-  .btn-category-pill-active {
-    @apply bg-[#171717] dark:bg-white border-transparent text-white dark:text-[#171717] font-medium text-[14px] rounded-pill-category px-5 py-2 transition-all duration-200 inline-flex items-center gap-2 shadow-whisper;
-  }
-
-  /* Custom input style */
-  .geist-input {
-    @apply bg-white dark:bg-[#121212] border border-[#ebebeb] dark:border-[#222222] text-[#171717] dark:text-white placeholder-[#a1a1a1] text-[14px] rounded-sm px-3.5 py-2 focus:outline-none focus:border-[#171717] dark:focus:border-white transition-colors duration-150;
+  /* Search Input */
+  .search-input {
+    @apply bg-white dark:bg-[#1E1B18] border border-[#EAE3DA] dark:border-[#2A2520] text-[#1F1F1F] dark:text-white placeholder-[#999088] text-[14px] rounded-full pl-5 pr-12 py-2.5 focus:outline-none focus:border-[#FF5E1B] transition-colors duration-150 shadow-warm-sm w-full;
   }
 }
 
-/* Hide scrollbar for category list */
+/* Hide scrollbars */
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -129,4 +66,3 @@
 .animate-shimmer {
   animation: shimmer 1.5s infinite;
 }
-

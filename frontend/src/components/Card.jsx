@@ -2,41 +2,46 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useFavorites } from '../context/FavoritesContext';
-import { FiPlus, FiHeart, FiStar, FiClock } from 'react-icons/fi';
+import { FiPlus, FiHeart, FiStar } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 import OptimizedImage from './OptimizedImage';
 
 const Card = ({ item }) => {
   const { addToCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
-
   const isFav = isFavorite(item.id);
 
   const handleAdd = (e) => {
     e.preventDefault();
+    e.stopPropagation();
     addToCart(item);
-    toast.success(`${item.name} added to cart`);
+    toast.success(`${item.name} added to cart!`, {
+      icon: '🍕',
+      style: {
+        borderRadius: '16px',
+        background: '#1F1F1F',
+        color: '#fff',
+      },
+    });
   };
 
   return (
     <motion.div 
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.2, ease: 'easeOut' }}
-      className="bg-white dark:bg-[#121212] border border-[#ebebeb] dark:border-[#222222] hover:border-[#171717] dark:hover:border-[#555555] rounded-xl shadow-whisper hover:shadow-floating transition-all duration-200 flex flex-col h-full overflow-hidden group"
+      whileHover={{ y: -6 }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
+      className="bg-white dark:bg-[#1E1B18] border border-[#F0E8DF] dark:border-[#2A2520] hover:border-[#FF5E1B]/40 rounded-3xl p-4 shadow-warm-sm hover:shadow-warm-md transition-all duration-300 flex flex-col justify-between h-full group relative"
     >
-      <Link to={`/product/${item.id}`} className="block relative h-48 overflow-hidden bg-[#fafafa] dark:bg-[#1a1a1a]">
-        <OptimizedImage 
-          src={item.image} 
-          alt={item.name}
-          width={600}
-          quality={75}
-          className="w-full h-full transition-transform duration-500 group-hover:scale-105"
-        />
+      {/* Top Floating Badge & Favorite Button */}
+      <div className="flex justify-between items-center mb-3">
         {item.isPopular ? (
-          <div className="absolute top-3 left-3 z-10 bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-[11px] font-mono font-medium uppercase tracking-wider px-2 py-0.5 rounded-sm shadow-sm">
-            Featured
-          </div>
-        ) : null}
+          <span className="bg-[#E8F5E9] dark:bg-[#1E3A24] text-[#2E7D32] dark:text-[#A5D6A7] text-[11px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">
+            Bestseller
+          </span>
+        ) : (
+          <span className="bg-[#FFF0E6] dark:bg-[#3D2517] text-[#FF5E1B] text-[11px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">
+            15% OFF
+          </span>
+        )}
 
         <button 
           onClick={(e) => { 
@@ -45,53 +50,57 @@ const Card = ({ item }) => {
             toggleFavorite(item); 
           }}
           aria-label="Toggle favorite"
-          className={`absolute top-3 right-3 p-2 rounded-full border transition-all z-10 ${
+          className={`p-2 rounded-full transition-all ${
             isFav 
-              ? 'bg-[#ee0000] border-[#ee0000] text-white shadow-sm' 
-              : 'bg-white/80 dark:bg-[#121212]/80 backdrop-blur-sm border-[#ebebeb] dark:border-[#333333] text-[#8f8f8f] hover:text-[#ee0000]'
+              ? 'bg-[#FF5E1B] text-white shadow-orange-glow' 
+              : 'bg-[#FFF9F2] dark:bg-[#26221F] text-[#999088] hover:text-[#FF5E1B]'
           }`}
         >
-          <FiHeart size={14} className={isFav ? 'fill-current' : ''} />
+          <FiHeart size={15} className={isFav ? 'fill-current' : ''} />
         </button>
+      </div>
+
+      {/* Dish Image Container */}
+      <Link to={`/product/${item.id}`} className="block relative my-2 overflow-hidden rounded-2xl bg-[#FFF9F2] dark:bg-[#26221F] p-2 flex items-center justify-center">
+        <OptimizedImage 
+          src={item.image} 
+          alt={item.name}
+          width={400}
+          quality={75}
+          className="w-40 h-40 object-cover rounded-full shadow-warm-sm transition-transform duration-500 group-hover:scale-110"
+        />
       </Link>
-      
-      <div className="p-4 flex flex-col flex-grow">
-        <div className="flex justify-between items-start gap-2 mb-1.5">
-          <Link to={`/product/${item.id}`} className="hover:text-[#0070f3] transition-colors">
-            <h3 className="text-[16px] font-semibold text-[#171717] dark:text-white line-clamp-1 tracking-tight">
-              {item.name}
-            </h3>
-          </Link>
-          <div className="flex items-center gap-1 bg-[#fafafa] dark:bg-[#1a1a1a] border border-[#ebebeb] dark:border-[#222222] px-2 py-0.5 rounded-sm text-[12px] font-mono font-medium text-[#171717] dark:text-[#ededed] shrink-0">
-            <FiStar size={11} className="text-[#f5a623] fill-current" />
-            {item.rating}
-          </div>
-        </div>
-        
-        <p className="text-[13px] text-[#4d4d4d] dark:text-[#a1a1a1] line-clamp-2 mb-4 flex-grow leading-relaxed">
+
+      {/* Dish Details */}
+      <div className="mt-2 flex flex-col flex-grow">
+        <Link to={`/product/${item.id}`} className="hover:text-[#FF5E1B] transition-colors">
+          <h3 className="text-[16px] font-bold text-[#1F1F1F] dark:text-white line-clamp-1 tracking-tight">
+            {item.name}
+          </h3>
+        </Link>
+
+        <p className="text-[12px] text-[#5E5854] dark:text-[#B0A8A0] line-clamp-1 mt-0.5 mb-3 font-medium">
           {item.description}
         </p>
 
-        <div className="flex items-center gap-3 text-[12px] font-mono text-[#8f8f8f] dark:text-[#707070] mb-4">
-          <span className="flex items-center gap-1">
-            <FiClock size={12} /> {item.prepTime || '15-20 min'}
-          </span>
-          <span>•</span>
-          <span className="capitalize">{item.category}</span>
-        </div>
-        
-        <div className="flex items-center justify-between mt-auto pt-3 border-t border-[#ebebeb] dark:border-[#222222]">
+        {/* Bottom Price & Add Action */}
+        <div className="flex items-center justify-between mt-auto pt-2 border-t border-[#F0E8DF] dark:border-[#2A2520]">
           <div>
-            <span className="text-[11px] font-mono text-[#8f8f8f] block uppercase tracking-wider">Price</span>
-            <span className="text-[18px] font-bold font-mono text-[#171717] dark:text-white">
+            <div className="flex items-center gap-1 text-[12px] text-[#FF5E1B] font-bold">
+              <FiStar size={12} className="fill-current" />
+              <span>{item.rating || 4.8}</span>
+            </div>
+            <span className="text-[17px] font-extrabold text-[#1F1F1F] dark:text-white font-sans">
               ₹{item.price.toFixed(2)}
             </span>
           </div>
+
           <button 
             onClick={handleAdd}
-            className="btn-primary-sm"
+            className="btn-orange-square"
+            aria-label="Add to cart"
           >
-            <FiPlus size={14} /> Add
+            <FiPlus size={18} />
           </button>
         </div>
       </div>

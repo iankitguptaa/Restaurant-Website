@@ -34,7 +34,7 @@ app.post('/api/auth/login', async (req, res) => {
 
 // Menu Routes
 app.get('/api/menu', async (req, res) => {
-  try { 
+  try {
     const items = await FoodItem.findAll();
     res.json(items);
   } catch (err) {
