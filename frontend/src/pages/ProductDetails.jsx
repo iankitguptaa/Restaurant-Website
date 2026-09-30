@@ -6,6 +6,7 @@ import { FiArrowLeft, FiMinus, FiPlus, FiShoppingBag, FiStar, FiClock, FiCheck }
 import toast from 'react-hot-toast';
 import { fetchFoodItemById } from '../services/data';
 import { useCart } from '../context/CartContext';
+import OptimizedImage from '../components/OptimizedImage';
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -76,13 +77,16 @@ const ProductDetails = () => {
           >
             <div className="hairline-card p-2 bg-white dark:bg-[#121212] overflow-hidden">
               <div className="relative aspect-square rounded-lg overflow-hidden bg-[#fafafa] dark:bg-[#1a1a1a]">
-                <img 
+                <OptimizedImage 
                   src={product.image} 
                   alt={product.name} 
-                  className="w-full h-full object-cover"
+                  width={800}
+                  quality={80}
+                  loading="eager"
+                  className="w-full h-full"
                 />
                 {product.isPopular ? (
-                  <span className="absolute top-4 left-4 bg-[#171717] text-white dark:bg-white dark:text-[#171717] text-[11px] font-mono font-medium uppercase tracking-wider px-2.5 py-1 rounded-sm shadow-whisper">
+                  <span className="absolute top-4 left-4 z-10 bg-[#171717] text-white dark:bg-white dark:text-[#171717] text-[11px] font-mono font-medium uppercase tracking-wider px-2.5 py-1 rounded-sm shadow-whisper">
                     Master Chef Choice
                   </span>
                 ) : null}

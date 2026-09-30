@@ -4,6 +4,7 @@ import { useCart } from '../context/CartContext';
 import { useFavorites } from '../context/FavoritesContext';
 import { FiPlus, FiHeart, FiStar, FiClock } from 'react-icons/fi';
 import toast from 'react-hot-toast';
+import OptimizedImage from './OptimizedImage';
 
 const Card = ({ item }) => {
   const { addToCart } = useCart();
@@ -24,14 +25,15 @@ const Card = ({ item }) => {
       className="bg-white dark:bg-[#121212] border border-[#ebebeb] dark:border-[#222222] hover:border-[#171717] dark:hover:border-[#555555] rounded-xl shadow-whisper hover:shadow-floating transition-all duration-200 flex flex-col h-full overflow-hidden group"
     >
       <Link to={`/product/${item.id}`} className="block relative h-48 overflow-hidden bg-[#fafafa] dark:bg-[#1a1a1a]">
-        <img 
+        <OptimizedImage 
           src={item.image} 
-          alt={item.name} 
-          loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          alt={item.name}
+          width={600}
+          quality={75}
+          className="w-full h-full transition-transform duration-500 group-hover:scale-105"
         />
         {item.isPopular ? (
-          <div className="absolute top-3 left-3 bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-[11px] font-mono font-medium uppercase tracking-wider px-2 py-0.5 rounded-sm shadow-sm">
+          <div className="absolute top-3 left-3 z-10 bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-[11px] font-mono font-medium uppercase tracking-wider px-2 py-0.5 rounded-sm shadow-sm">
             Featured
           </div>
         ) : null}

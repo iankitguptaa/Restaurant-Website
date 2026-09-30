@@ -6,6 +6,7 @@ import { FiArrowRight, FiZap, FiShield, FiClock, FiCheckCircle, FiStar, FiTruck,
 import { fetchFoodItems } from '../services/data';
 import Card from '../components/Card';
 import Skeleton from '../components/Skeleton';
+import OptimizedImage from '../components/OptimizedImage';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -31,11 +32,11 @@ const Home = () => {
   const [featured, setFeatured] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Background images for hero rotation
+  // Background images for hero rotation (optimized sizes for sub-second loading)
   const heroImages = [
-    'https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=90', // Gourmet steak & feast
-    'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=90', // Luxury dark dining
-    'https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=90'  // Gourmet dish
+    'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=75', // Gourmet steak & feast
+    'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=75', // Luxury dark dining
+    'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=75'  // Gourmet dish
   ];
   const [heroBgIndex, setHeroBgIndex] = useState(0);
 
@@ -88,6 +89,8 @@ const Home = () => {
             <img 
               src={imgUrl} 
               alt="Luxury Gourmet Dining Feasts" 
+              loading={idx === 0 ? 'eager' : 'lazy'}
+              decoding="async"
               className="w-full h-full object-cover scale-105"
             />
           </motion.div>
@@ -205,15 +208,18 @@ const Home = () => {
                 >
                   {/* High Res Dish Image Container */}
                   <div className="relative h-72 rounded-xl overflow-hidden border border-white/20 group">
-                    <img 
-                      src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                    <OptimizedImage 
+                      src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38" 
                       alt="Artisan Gourmet Pizza" 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      width={800}
+                      quality={75}
+                      loading="eager"
+                      className="w-full h-full transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                    <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none"></div>
                     
                     {/* Top Right Rating Tag */}
-                    <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-white text-[11px] font-mono px-2.5 py-1 rounded-full border border-white/20 flex items-center gap-1">
+                    <div className="absolute top-3 right-3 z-20 bg-black/60 backdrop-blur-md text-white text-[11px] font-mono px-2.5 py-1 rounded-full border border-white/20 flex items-center gap-1">
                       <FiStar size={12} className="text-[#f5a623] fill-current" /> 4.9 (420 reviews)
                     </div>
 
