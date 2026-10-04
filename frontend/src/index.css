@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,63 +6,104 @@
 
 @layer base {
   body {
-    @apply bg-[#FFF9F2] dark:bg-[#12100E] text-[#1F1F1F] dark:text-[#F5F2EE] font-sans antialiased selection:bg-[#FF5E1B] selection:text-white;
+    @apply bg-[#F8F3EE] text-[#1C1C1C] font-sans antialiased selection:bg-[#E8232A] selection:text-white;
+    font-family: 'Inter', sans-serif;
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-sans tracking-tight;
   }
 }
 
 @layer utilities {
-  /* Warm Glassmorphism & Soft Cards */
+  /* ======= CARD VARIANTS ======= */
+  .site-card {
+    @apply bg-white border border-[#E8E0D8] rounded-2xl shadow-sm transition-all duration-300;
+  }
+
+  .site-card-hover {
+    @apply site-card hover:shadow-md hover:-translate-y-1;
+  }
+
+  /* ======= BUTTONS ======= */
+  .btn-primary {
+    @apply bg-[#E8232A] hover:bg-[#C41E24] text-white font-semibold text-sm rounded-lg px-5 py-2.5 transition-all duration-200 active:scale-95 inline-flex items-center justify-center gap-2 shadow-sm;
+  }
+
+  .btn-primary-outline {
+    @apply bg-transparent border-2 border-[#E8232A] text-[#E8232A] hover:bg-[#E8232A] hover:text-white font-semibold text-sm rounded-lg px-5 py-2.5 transition-all duration-200 active:scale-95 inline-flex items-center justify-center gap-2;
+  }
+
+  .btn-dark {
+    @apply bg-[#1C1C1C] hover:bg-[#333] text-white font-semibold text-sm rounded-lg px-5 py-2.5 transition-all duration-200 active:scale-95 inline-flex items-center justify-center gap-2 shadow-sm;
+  }
+
+  .btn-green {
+    @apply bg-[#3E9C4A] hover:bg-[#2E7A38] text-white font-semibold text-sm rounded-lg px-5 py-2.5 transition-all duration-200 active:scale-95 inline-flex items-center justify-center gap-2 shadow-sm;
+  }
+
+  /* ======= SEARCH INPUT ======= */
+  .search-input {
+    @apply bg-white border border-[#E8E0D8] text-[#1C1C1C] placeholder-[#9E9E9E] text-sm rounded-xl pl-12 pr-4 py-3 focus:outline-none focus:border-[#E8232A] focus:ring-2 focus:ring-[#E8232A]/10 transition-all duration-150 w-full shadow-sm;
+  }
+
+  /* ======= SECTION TITLE ======= */
+  .section-title {
+    @apply text-2xl font-bold text-[#1C1C1C];
+  }
+
+  /* ======= BADGE ======= */
+  .badge-green {
+    @apply bg-[#3E9C4A] text-white font-bold text-xs px-2 py-0.5 rounded-md inline-flex items-center gap-1;
+  }
+
+  .badge-red {
+    @apply bg-[#E8232A] text-white font-bold text-xs px-2 py-0.5 rounded-md;
+  }
+
+  .badge-orange {
+    @apply bg-[#FF8C00] text-white font-bold text-xs px-2 py-0.5 rounded-md;
+  }
+
+  /* ======= SCROLLBAR HIDE ======= */
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* ======= WARM CARD (backward compat) ======= */
   .warm-card {
-    @apply bg-white dark:bg-[#1E1B18] border border-[#F0E8DF] dark:border-[#2A2520] rounded-2xl shadow-warm-sm transition-all duration-300;
+    @apply bg-white border border-[#E8E0D8] rounded-2xl shadow-sm transition-all duration-300;
   }
 
   .warm-card-hover {
-    @apply warm-card hover:shadow-warm-md hover:-translate-y-1 hover:border-[#FF5E1B]/30;
+    @apply warm-card hover:shadow-md hover:-translate-y-1;
   }
 
-  /* Orange Pill Button */
+  /* ======= OLD BUTTONS (backward compat) ======= */
   .btn-orange-pill {
-    @apply bg-[#FF5E1B] hover:bg-[#E04B0E] text-white font-semibold text-[14px] rounded-full px-6 py-2.5 transition-all duration-200 shadow-orange-glow active:scale-95 inline-flex items-center justify-center gap-2;
+    @apply bg-[#E8232A] hover:bg-[#C41E24] text-white font-semibold text-sm rounded-full px-6 py-2.5 transition-all duration-200 active:scale-95 inline-flex items-center justify-center gap-2 shadow-sm;
   }
 
-  /* White Pill Button */
   .btn-white-pill {
-    @apply bg-white dark:bg-[#26221F] hover:bg-[#FFF5EB] dark:hover:bg-[#302B27] text-[#1F1F1F] dark:text-white border border-[#EAE3DA] dark:border-[#38322C] font-semibold text-[14px] rounded-full px-6 py-2.5 transition-all duration-200 active:scale-95 inline-flex items-center justify-center gap-2 shadow-warm-sm;
+    @apply bg-white hover:bg-[#F8F3EE] text-[#1C1C1C] border border-[#E8E0D8] font-semibold text-sm rounded-full px-6 py-2.5 transition-all duration-200 active:scale-95 inline-flex items-center justify-center gap-2 shadow-sm;
   }
 
-  /* Compact Action Button */
   .btn-orange-sm {
-    @apply bg-[#FF5E1B] hover:bg-[#E04B0E] text-white font-bold text-[13px] rounded-xl px-4 py-2 transition-all duration-200 active:scale-95 inline-flex items-center justify-center gap-1.5 shadow-warm-sm;
+    @apply bg-[#E8232A] hover:bg-[#C41E24] text-white font-bold text-[13px] rounded-xl px-4 py-2 transition-all duration-200 active:scale-95 inline-flex items-center justify-center gap-1.5 shadow-sm;
   }
 
   .btn-orange-square {
-    @apply w-9 h-9 bg-[#FF5E1B] hover:bg-[#E04B0E] text-white rounded-xl flex items-center justify-center transition-all duration-200 shadow-warm-sm active:scale-95;
+    @apply w-9 h-9 bg-[#E8232A] hover:bg-[#C41E24] text-white rounded-xl flex items-center justify-center transition-all duration-200 active:scale-95;
   }
-
-  /* Search Input */
-  .search-input {
-    @apply bg-white dark:bg-[#1E1B18] border border-[#EAE3DA] dark:border-[#2A2520] text-[#1F1F1F] dark:text-white placeholder-[#999088] text-[14px] rounded-full pl-5 pr-12 py-2.5 focus:outline-none focus:border-[#FF5E1B] transition-colors duration-150 shadow-warm-sm w-full;
-  }
-}
-
-/* Hide scrollbars */
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 @keyframes shimmer {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
 }
+.animate-shimmer { animation: shimmer 1.5s infinite; }
 
-.animate-shimmer {
-  animation: shimmer 1.5s infinite;
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
+.animate-fade-in-up { animation: fadeInUp 0.5s ease-out; }

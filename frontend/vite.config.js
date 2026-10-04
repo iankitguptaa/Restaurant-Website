@@ -11,5 +11,6 @@ export default defineConfig({
       }
     }
   },
-  base: "./"   // 👈 ye line MUST hai
+  // base: "./" removed — causes blank page with React Router (BrowserRouter)
+  // Use "/" (default) for dev; set via env only if deploying to subpath
 })

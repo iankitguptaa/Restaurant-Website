@@ -8,6 +8,21 @@ const User = sequelize.define('User', {
   role: { type: Sequelize.STRING, defaultValue: 'user' }
 });
 
+const Restaurant = sequelize.define('Restaurant', {
+  name: { type: Sequelize.STRING, allowNull: false },
+  cuisine: { type: Sequelize.STRING, allowNull: false },
+  rating: { type: Sequelize.FLOAT, defaultValue: 4.5 },
+  reviewsCount: { type: Sequelize.INTEGER, defaultValue: 150 },
+  prepTime: { type: Sequelize.STRING, defaultValue: '20-25 min' },
+  costForTwo: { type: Sequelize.STRING, defaultValue: '₹400 for two' },
+  location: { type: Sequelize.STRING, defaultValue: 'Connaught Place, New Delhi' },
+  image: { type: Sequelize.STRING },
+  bannerImage: { type: Sequelize.STRING },
+  discount: { type: Sequelize.STRING },
+  isFeatured: { type: Sequelize.BOOLEAN, defaultValue: true },
+  isPureVeg: { type: Sequelize.BOOLEAN, defaultValue: false }
+});
+
 const FoodItem = sequelize.define('FoodItem', {
   id_string: { type: Sequelize.STRING, unique: true }, // like 'pizza-margherita'
   name: { type: Sequelize.STRING, allowNull: false },
@@ -18,7 +33,9 @@ const FoodItem = sequelize.define('FoodItem', {
   rating: { type: Sequelize.FLOAT },
   reviews: { type: Sequelize.INTEGER },
   prepTime: { type: Sequelize.STRING },
-  isPopular: { type: Sequelize.BOOLEAN }
+  isPopular: { type: Sequelize.BOOLEAN },
+  isVeg: { type: Sequelize.BOOLEAN, defaultValue: true },
+  restaurantId: { type: Sequelize.INTEGER }
 });
 
 const Order = sequelize.define('Order', {
@@ -32,4 +49,8 @@ const Order = sequelize.define('Order', {
 User.hasMany(Order);
 Order.belongsTo(User);
 
-module.exports = { sequelize, User, FoodItem, Order };
+Restaurant.hasMany(FoodItem, { foreignKey: 'restaurantId', as: 'dishes' });
+FoodItem.belongsTo(Restaurant, { foreignKey: 'restaurantId', as: 'restaurant' });
+
+module.exports = { sequelize, User, Restaurant, FoodItem, Order };
+
