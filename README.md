@@ -1,16 +1,94 @@
-# React + Vite
+# 🍽️ BiteRoute — Food Ordering Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Precision-crafted meals delivered with speed. A full-stack gourmet food ordering platform.
 
-Currently, two official plugins are available:
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-BiteRoute-orange?style=for-the-badge&logo=vercel)](https://restaurant-website-zeta-ruby.vercel.app)
+[![Backend API](https://img.shields.io/badge/Backend%20API-Render-blue?style=for-the-badge&logo=render)](https://restaurant-website-1-suom.onrender.com/api/restaurants)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🌐 Live Demo
 
-## React Compiler
+👉 **[restaurant-website-zeta-ruby.vercel.app](https://restaurant-website-zeta-ruby.vercel.app)**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+| Layer | Technology |
+|-------|-----------|
+| **Frontend** | React 19 + Vite + Tailwind CSS |
+| **UI/Animation** | Framer Motion + React Icons |
+| **Backend** | Node.js + Express.js |
+| **ORM** | Sequelize |
+| **Database** | PostgreSQL (Neon) |
+| **Hosting** | Vercel (frontend) + Render (backend) |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+
+- 🏠 Restaurant listings with search & filter
+- 🍕 Menu browsing by category
+- 🛒 Cart management
+- 📦 Order placement & history
+- 👤 User authentication (login/register)
+- ❤️ Favorites / Wishlist
+- 🎛️ Admin dashboard
+- 🌙 Dark / Light mode
+- 📱 Fully responsive design
+
+## 🚀 Deployment
+
+| Service | URL |
+|---------|-----|
+| 🖥️ Frontend (Vercel) | [restaurant-website-zeta-ruby.vercel.app](https://restaurant-website-zeta-ruby.vercel.app) |
+| 🚀 Backend API (Render) | [restaurant-website-1-suom.onrender.com](https://restaurant-website-1-suom.onrender.com/api/restaurants) |
+| 🗄️ Database | Neon PostgreSQL |
+
+## 🏃 Local Development
+
+```bash
+# Clone the repo
+git clone https://github.com/iankitguptaa/Restaurant-Website.git
+cd Restaurant-Website
+
+# Install dependencies
+npm install
+npm install --prefix frontend
+npm install --prefix backend
+
+# Run both frontend + backend
+npm run dev
+```
+
+Frontend runs on `http://localhost:5173`  
+Backend runs on `http://localhost:5000`
+
+## 📁 Project Structure
+
+```
+├── frontend/          # React + Vite app
+│   ├── src/
+│   │   ├── pages/     # Route pages
+│   │   ├── components/# Reusable components
+│   │   ├── context/   # React context (Auth, Cart, etc.)
+│   │   └── services/  # API service layer
+├── backend/           # Express.js server
+│   ├── models/        # Sequelize models
+│   ├── database.js    # DB connection (SQLite dev / Postgres prod)
+│   └── server.js      # API routes
+└── render.yaml        # Render deployment config
+```
+
+## 🔑 Environment Variables
+
+**Frontend** (`frontend/.env.production`):
+```
+VITE_API_URL=https://restaurant-website-1-suom.onrender.com/api
+```
+
+**Backend** (Render dashboard):
+```
+DATABASE_URL=<Neon PostgreSQL connection string>
+NODE_ENV=production
+FRONTEND_URL=https://restaurant-website-zeta-ruby.vercel.app
+```
+
+---
+
+Made with ❤️ by [Ankit Gupta](https://github.com/iankitguptaa)
