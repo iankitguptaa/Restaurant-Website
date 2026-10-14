@@ -60,7 +60,7 @@ const Checkout = () => {
 
   return (
     <div className="pt-20 pb-20 min-h-screen bg-[#fafafa] dark:bg-[#0a0a0a]">
-      <Helmet><title>Checkout | CraveBite Geist Spec</title></Helmet>
+      <Helmet><title>Checkout | BiteRoute Geist Spec</title></Helmet>
       
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         

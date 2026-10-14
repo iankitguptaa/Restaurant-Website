@@ -12,7 +12,7 @@ const Contact = () => {
 
   return (
     <div className="pt-20 pb-20 min-h-screen bg-[#fafafa] dark:bg-[#0a0a0a]">
-      <Helmet><title>Contact Support | CraveBite Geist Spec</title></Helmet>
+      <Helmet><title>Contact Support | BiteRoute Geist Spec</title></Helmet>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -65,7 +65,7 @@ const Contact = () => {
                   <div>
                     <span className="font-semibold block text-[#171717] dark:text-white">Official Email</span>
                     <p className="text-[#4d4d4d] dark:text-[#a1a1a1] text-xs font-mono mt-0.5">
-                      support@cravebite.com
+                      support@BiteRoute.com
                     </p>
                   </div>
                 </div>

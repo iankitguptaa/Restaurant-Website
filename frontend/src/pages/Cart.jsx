@@ -39,7 +39,7 @@ const Cart = () => {
   if (cart.length === 0) {
     return (
       <div className="pt-24 pb-20 min-h-screen flex flex-col items-center justify-center bg-[#fafafa] dark:bg-[#0a0a0a] px-4">
-        <Helmet><title>Cart | CraveBite Geist Spec</title></Helmet>
+        <Helmet><title>Cart | BiteRoute Geist Spec</title></Helmet>
         <motion.div 
           initial={{ scale: 0.95, opacity: 0 }} 
           animate={{ scale: 1, opacity: 1 }}
@@ -67,7 +67,7 @@ const Cart = () => {
 
   return (
     <div className="pt-20 pb-20 min-h-screen bg-[#fafafa] dark:bg-[#0a0a0a]">
-      <Helmet><title>Order Cart | CraveBite Geist Spec</title></Helmet>
+      <Helmet><title>Order Cart | BiteRoute Geist Spec</title></Helmet>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         

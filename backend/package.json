@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "CraveBite Food Website Backend Server",
+  "description": "BiteRoute Food Website Backend Server",
   "main": "server.js",
   "scripts": {
     "dev": "node server.js",

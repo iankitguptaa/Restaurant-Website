@@ -36,7 +36,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#fafafa] dark:bg-[#0a0a0a] py-20 px-4">
-      <Helmet><title>{isLogin ? 'Log In' : 'Sign Up'} — CraveBite Geist Spec</title></Helmet>
+      <Helmet><title>{isLogin ? 'Log In' : 'Sign Up'} — BiteRoute Geist Spec</title></Helmet>
       
       <div className="max-w-md w-full hairline-card p-8 space-y-6">
         
@@ -46,7 +46,7 @@ const Login = () => {
           </div>
           <span className="mono-eyebrow block">AUTHENTICATION GATEWAY</span>
           <h2 className="text-2xl font-bold font-sans text-[#171717] dark:text-white tracking-tight">
-            {isLogin ? 'Log In to CraveBite' : 'Create an Account'}
+            {isLogin ? 'Log In to BiteRoute' : 'Create an Account'}
           </h2>
         </div>
 

@@ -159,11 +159,10 @@ const RestaurantDetail = () => {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all ${
-                  activeCategory === cat
-                    ? 'bg-[#E8232A] text-white'
-                    : 'bg-white text-[#4E4E4E] border border-[#E8E0D8] hover:border-[#E8232A] hover:text-[#E8232A]'
-                }`}
+                className={`px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all ${activeCategory === cat
+                  ? 'bg-[#E8232A] text-white'
+                  : 'bg-white text-[#4E4E4E] border border-[#E8E0D8] hover:border-[#E8232A] hover:text-[#E8232A]'
+                  }`}
               >
                 {cat}
               </button>

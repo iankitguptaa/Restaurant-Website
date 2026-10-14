@@ -91,7 +91,7 @@ const AdminDashboard = () => {
 
   return (
     <div className="pt-20 pb-20 min-h-screen bg-[#fafafa] dark:bg-[#0a0a0a]">
-      <Helmet><title>Admin Control Panel | CraveBite Geist Spec</title></Helmet>
+      <Helmet><title>Admin Control Panel | BiteRoute Geist Spec</title></Helmet>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         

@@ -5,7 +5,7 @@ import { FiCheckCircle, FiAward, FiShield, FiTrendingUp } from 'react-icons/fi';
 const AboutUs = () => {
   return (
     <div className="pt-20 pb-20 min-h-screen bg-[#fafafa] dark:bg-[#0a0a0a]">
-      <Helmet><title>About CraveBite | Geist Architecture</title></Helmet>
+      <Helmet><title>About BiteRoute | Geist Architecture</title></Helmet>
       
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -27,7 +27,7 @@ const AboutUs = () => {
               Subtraction of friction between farm, chef, and palate.
             </h2>
             <p className="text-[15px] text-[#4d4d4d] dark:text-[#a1a1a1] leading-relaxed">
-              Founded in 2026, CraveBite was built on a simple premise: apply modern developer-grade precision and telemetry to food dispatch. We partner exclusively with top-tier culinary kitchens and maintain strict temperature-controlled transit standards.
+              Founded in 2026, BiteRoute was built on a simple premise: apply modern developer-grade precision and telemetry to food dispatch. We partner exclusively with top-tier culinary kitchens and maintain strict temperature-controlled transit standards.
             </p>
           </div>
 
